@@ -1,13 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Expenditure, type: :model do
-  let(:subject) do
-    described_class.new(
-      value: '10',
-      date: '2021/04/14',
-      description: "This is some expenditure decription, so we're just making some big text."
-    )
-  end
+  let(:test_expense) { Expense.create(name: 'Grocery') }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:value) }
@@ -76,12 +70,31 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).not_to be_valid
     end
 
+    # EXPENSE ID TESTING
+
+    it "expects the subject to be invalid for it doesn't have a expense id" do
+      subject.date = '20200414'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = nil
+      expect(subject).not_to be_valid
+    end
+
+    it "expects the subject to be invalid for it has an invalid expense id" do
+      subject.date = '20200414'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = 'Hola me llamo Tadeu'
+      expect(subject).not_to be_valid
+    end
+
     # WORKING CASES
 
     it "expects the subject to be valid 1" do
       subject.date = '20200414'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).to be_valid
     end
 
@@ -89,6 +102,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2020/04/14'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).to be_valid
     end
 
@@ -96,6 +110,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2020-04-14'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).to be_valid
     end
 
@@ -103,8 +118,13 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '14-04-2021'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).to be_valid
     end
 
+  end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:expense) }
   end
 end

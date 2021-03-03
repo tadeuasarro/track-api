@@ -31,4 +31,8 @@ RSpec.describe Expense, type: :model do
     end
 
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:expenditures) }
+  end
 end

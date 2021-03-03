@@ -2,6 +2,11 @@ class ExpendituresController < ApplicationController
 
   def index
     @expenditures = Expenditure.all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @expenditures }
+    end
   end
 
   def show
@@ -10,6 +15,8 @@ class ExpendituresController < ApplicationController
 
   def create
     expenditure = Expenditure.new(expenditure_params)
+
+    Rails.logger.debug params
   end
 
   def update

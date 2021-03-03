@@ -14,6 +14,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2021/04/14'
       subject.value = nil
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -21,6 +22,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2021/04/14'
       subject.value = 'Hola me llamo Tadeu'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -30,6 +32,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = nil
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -37,6 +40,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = 'Hola me llamo Tadeu'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -44,6 +48,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '04-14-2021'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -53,6 +58,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2021/04/14'
       subject.value = '10'
       subject.description = nil
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -60,6 +66,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2021/04/14'
       subject.value = '10'
       subject.description = '123456789'
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 
@@ -67,6 +74,7 @@ RSpec.describe Expenditure, type: :model do
       subject.date = '2021/04/14'
       subject.value = '10'
       subject.description = '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
+      subject.expense_id = test_expense.id
       expect(subject).not_to be_valid
     end
 

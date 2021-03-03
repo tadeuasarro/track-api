@@ -6,4 +6,5 @@ class Expenditure < ApplicationRecord
   validates :date, presence: true, length: { is: 10 }
 
   belongs_to :expense
+  belongs_to :user
 end

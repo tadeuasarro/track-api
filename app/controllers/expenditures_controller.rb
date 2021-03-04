@@ -1,7 +1,7 @@
 class ExpendituresController < ApplicationController
 
   def index
-    @expenditures = Expenditure.all
+    @expenditures = Expenditure.where("user_id = #{params[:user_id]}")
 
     respond_to do |format|
       format.json { render :json => @expenditures }

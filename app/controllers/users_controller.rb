@@ -8,4 +8,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def create
+    user = User.new(user_params)
+
+    respond_to do |format|
+      if user.save
+        format.json { render :json => true }
+      else
+        format.json { render json: user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :target)
+  end
+
 end

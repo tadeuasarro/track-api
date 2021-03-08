@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :expenditures, only: [:index, :create]
-  resources :users, except: [:delete, :index]
+  resources :expenditures, except: [:show, :update]
+  resources :users, except: [:destroy, :index]
 end

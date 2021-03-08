@@ -1,7 +1,7 @@
 class ExpendituresController < ApplicationController
 
   def index
-    @expenditures = Expenditure.where("user_id = #{params[:user_id]}")
+    @expenditures = Expenditure.where("user_id = #{params[:user_id]}").order('date DESC')
 
     respond_to do |format|
       format.json { render :json => @expenditures }
@@ -17,6 +17,15 @@ class ExpendituresController < ApplicationController
       else
         format.json { render json: expenditure.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    expenditure = Expenditure.find(params[:id])
+    expenditure.destroy
+
+    respond_to do |format|
+      format.json {render :json => true}
     end
   end
 

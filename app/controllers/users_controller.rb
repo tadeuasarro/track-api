@@ -24,13 +24,17 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.target = params[:target]
 
-    Rails.logger.debug user.errors
+    if user.target === 0
+      user.expenditures.destroy_all
+    end
+
+    Rails.logger.debug params
 
     respond_to do |format|
       if user.save
         format.json { render :json => true }
       else
-        format.json { render json: user.errors, status: unprocessable_entity }
+        format.json { render json: user.errors }
       end
     end
   end

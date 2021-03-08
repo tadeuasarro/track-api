@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.target = params[:target]
 
+    Rails.logger.debug user.errors
+
     respond_to do |format|
       if user.save
         format.json { render :json => true }

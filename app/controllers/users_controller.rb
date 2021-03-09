@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => @user }
+      format.html { render :html => @user }
     end
   end
 
@@ -14,8 +15,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user.save
         format.json { render :json => true }
+        format.html { render :html => true }
       else
         format.json { render json: user.errors, status: :unprocessable_entity }
+        format.html { render html: user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -33,8 +36,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user.save
         format.json { render :json => true }
+        format.html { render :html => true }
       else
         format.json { render json: user.errors }
+        format.html { render html: user.errors }
       end
     end
   end

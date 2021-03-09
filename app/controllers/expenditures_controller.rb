@@ -5,6 +5,7 @@ class ExpendituresController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => @expenditures }
+      format.html { render :html => @expenditures }
     end
   end
 
@@ -14,8 +15,10 @@ class ExpendituresController < ApplicationController
     respond_to do |format|
       if expenditure.save
         format.json { render :json => true }
+        format.html { render :html => true }
       else
-        format.json { render json: expenditure.errors, status: :unprocessable_entity }
+        format.json { render json: expenditure.errors }
+        format.html { render html: expenditure }
       end
     end
   end

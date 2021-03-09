@@ -32,7 +32,6 @@ RSpec.describe 'Expenditures', type: :request do
                user_id: 1
              }
            }
-      Rails.logger.debug 'hi'
       expect(response.status).to equal(200)
     end
   end

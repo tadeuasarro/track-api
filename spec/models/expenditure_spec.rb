@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Expenditure, type: :model do
   let(:test_expense) { Expense.create(name: 'Grocery') }
-  let(:test_user) { User.create(username: 'Tadeu') }
+  let(:test_user) { User.create(username: 'Tadeu', target: 3000) }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:value) }

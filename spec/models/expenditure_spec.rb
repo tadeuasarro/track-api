@@ -73,19 +73,10 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).not_to be_valid
     end
 
-    it "expects the subject to be invalid for its description is too short" do
+    it 'expects the subject to be invalid for its description is too short' do
       subject.date = '2021/04/14'
       subject.value = '10'
       subject.description = '123456789'
-      subject.expense_id = test_expense.id
-      subject.user_id = test_user.id
-      expect(subject).not_to be_valid
-    end
-
-    it "expects the subject to be invalid for its description is too long" do
-      subject.date = '2021/04/14'
-      subject.value = '10'
-      subject.description = '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
       subject.expense_id = test_expense.id
       subject.user_id = test_user.id
       expect(subject).not_to be_valid
@@ -101,7 +92,7 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).not_to be_valid
     end
 
-    it "expects the subject to be invalid for it has an invalid expense id" do
+    it 'expects the subject to be invalid for it has an invalid expense id' do
       subject.date = '20200414'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
@@ -120,7 +111,7 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).not_to be_valid
     end
 
-    it "expects the subject to be invalid for it has an invalid user id" do
+    it 'expects the subject to be invalid for it has an invalid user id' do
       subject.date = '20200414'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
@@ -131,7 +122,7 @@ RSpec.describe Expenditure, type: :model do
 
     # WORKING CASES
 
-    it "expects the subject to be valid 1" do
+    it 'expects the subject to be valid 1' do
       subject.date = '20200414'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
@@ -140,7 +131,7 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).to be_valid
     end
 
-    it "expects the subject to be valid 2" do
+    it 'expects the subject to be valid 2' do
       subject.date = '2020/04/14'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
@@ -149,7 +140,7 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).to be_valid
     end
 
-    it "expects the subject to be valid 3" do
+    it 'expects the subject to be valid 3' do
       subject.date = '2020-04-14'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
@@ -158,7 +149,7 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).to be_valid
     end
 
-    it "expects the subject to be valid 4" do
+    it 'expects the subject to be valid 4' do
       subject.date = '14-04-2021'
       subject.value = '10'
       subject.description = "This is some expenditure decription, so we're just making some big text."
@@ -166,7 +157,6 @@ RSpec.describe Expenditure, type: :model do
       subject.user_id = test_user.id
       expect(subject).to be_valid
     end
-
   end
 
   describe 'associations' do

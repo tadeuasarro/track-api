@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:subject) do
     described_class.new(
-      username: 'Tadeu',
+      username: 'Tadeu'
     )
   end
 
@@ -34,12 +34,11 @@ RSpec.describe User, type: :model do
       expect(subject).not_to be_valid
     end
 
-    it "expects the subject to be valid" do
+    it 'expects the subject to be valid' do
       subject.username = '12345678'
       subject.target = 0
       expect(subject).to be_valid
     end
-
   end
 
   describe 'associations' do

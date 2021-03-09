@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Expense, type: :model do
   let(:subject) do
     described_class.new(
-      name: 'Grocery',
+      name: 'Grocery'
     )
   end
 
@@ -25,11 +25,10 @@ RSpec.describe Expense, type: :model do
       expect(subject).not_to be_valid
     end
 
-    it "expects the subject to be valid" do
+    it 'expects the subject to be valid' do
       subject.name = '12345678'
       expect(subject).to be_valid
     end
-
   end
 
   describe 'associations' do

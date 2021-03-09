@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find_by(username: params[:id])
 
     respond_to do |format|
-      format.json { render :json => @user }
-      format.html { render :html => @user }
+      format.json { render json: @user }
+      format.html { render html: @user }
     end
   end
 
@@ -14,8 +13,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if user.save
-        format.json { render :json => true }
-        format.html { render :html => true }
+        format.json { render json: true }
+        format.html { render html: true }
       else
         format.json { render json: user.errors, status: :unprocessable_entity }
         format.html { render html: user.errors, status: :unprocessable_entity }
@@ -27,16 +26,14 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.target = params[:target]
 
-    if user.target === 0
-      user.expenditures.destroy_all
-    end
+    user.expenditures.destroy_all if user.target.zero?
 
     Rails.logger.debug params
 
     respond_to do |format|
       if user.save
-        format.json { render :json => true }
-        format.html { render :html => true }
+        format.json { render json: true }
+        format.html { render html: true }
       else
         format.json { render json: user.errors }
         format.html { render html: user.errors }
@@ -49,5 +46,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :target)
   end
-
 end

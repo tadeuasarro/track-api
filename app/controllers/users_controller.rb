@@ -26,9 +26,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.target = params[:target]
 
-    user.expenditures.destroy_all if user.target.zero?
-
-    Rails.logger.debug params
+    # rubocop:disable Style/NumericPredicate
+    user.expenditures.destroy_all if user.target == 0
+    # rubocop:enable Style/NumericPredicate
 
     respond_to do |format|
       if user.save

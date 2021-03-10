@@ -1,24 +1,109 @@
-# README
+# Final Capstone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Hello there! Welcome to Personal Expenses, your personal expenses managing API. The purpose of this project is to help people managing their expenses and achieving their personal financial goals.
 
-Things you may want to cover:
+##### This is a back-end API, which provides data to [this application](https://github.com/tadeuasarro/track-app/tree/milestone7) that I developed.
 
-* Ruby version
+#### Features
+- Index all expenditures
+- Create new expenditures
+- Create users
+- Login with a user username
+- Update the user target
+- Delete expenditures
 
-* System dependencies
+#### URL for HTTP requests
 
-* Configuration
+- [Heroku](https://enigmatic-everglades-24941.herokuapp.com/)
 
-* Database creation
+## Built With
 
-* Database initialization
+- [Rails](https://rubyonrails.org/)
 
-* How to run the test suite
+## Packages
+- [Eslint](https://eslint.org/)
+- [PropTypes](https://www.npmjs.com/package/prop-types)
+- [React-dom](https://www.npmjs.com/package/react-dom)
+- [React-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [React-test-renderer](https://www.npmjs.com/package/react-test-renderer)
+- [Redux-thunk](https://www.npmjs.com/package/redux-thunk)
+- [Stylelint](https://stylelint.io/)
+- [Webpack](https://webpack.js.org/)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Getting started
 
-* Deployment instructions
+### Setup
 
-* ...
+Clone the repo with
+
+```
+  https://github.com/tadeuasarro/track-api.git
+```
+
+Then run
+
+```
+  bundle install
+```
+
+Start server with:
+
+```
+  rails server
+```
+
+Follow the instructions in [this repo](https://github.com/tadeuasarro/track-app/tree/milestone7) to get started with the React application.
+
+### Run tests
+
+```
+  rspec
+```
+
+### Using | Requests examples
+
+##### Creating Expenditures
+  const url = 'https://enigmatic-everglades-24941.herokuapp.com/expenditures';
+  const config = {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      value: 1000,
+      date: '2020/03/10',
+      description: 'This is just some string',
+      user_id: 1,
+      expense_id: 1,
+    }),
+  };
+
+  fetch(url, config)
+
+### Authors
+
+👤 This is me:
+
+- [Tadeu A Sarro](https://tadeuasarro.me)
+
+
+### Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/tadeuasarro/track-api/issues)
+
+
+### Show your support
+
+Give a star if you like this project!
+
+### Acknowledgments
+
+- [Track-APP](https://github.com/tadeuasarro/track-app/tree/milestone7)
+- [Microverse](https://www.microverse.org/)
+
+### 📝 License
+
+This project is MIT licensed.

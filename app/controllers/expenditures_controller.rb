@@ -28,6 +28,7 @@ class ExpendituresController < ApplicationController
 
     respond_to do |format|
       format.json { render json: true }
+      format.html { render html: true }
     end
   end
 

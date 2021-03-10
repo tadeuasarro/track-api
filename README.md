@@ -63,7 +63,8 @@ Follow the instructions in [this repo](https://github.com/tadeuasarro/track-app/
 ### Using | Requests examples
 
 ##### Creating Expenditures
-  const url = 'https://enigmatic-everglades-24941.herokuapp.com/expenditures';
+  const url = 'https://enigmatic-everglades-24941.herokuapp.com/expenditures'
+
   const config = {
     mode: 'cors',
     method: 'POST',

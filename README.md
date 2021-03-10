@@ -63,75 +63,28 @@ Follow the instructions in [this repo](https://github.com/tadeuasarro/track-app/
 ### Using | Requests examples using JS
 
 ##### Create Expenditure
-  const url = `https://enigmatic-everglades-24941.herokuapp.com/expenditures`;
-
-  const config = {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      value: 1000,
-      date: '2020/03/10',
-      description: 'This is just some string',
-      user_id: 1,
-      expense_id: 1,
-    }),
-  };
+const url = `https://enigmatic-everglades-24941.herokuapp.com/expenditures`;
+const config = `{ mode: 'cors', method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ value: 1000, date: '2020/03/10', description: 'This is just some string', user_id: 1, expense_id: 1 }) }`
 
 ##### Index Expenditures
-const url = `https://enigmatic-everglades-24941.herokuapp.com/expenditures?user_id=${user_id}`;
-
-const config = {
-  mode: 'cors',
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
+const url = `https://enigmatic-everglades-24941.herokuapp.com/expenditures?user_id=${user_id}`
+const config = `{ mode: 'cors', method: 'GET', headers: { 'Content-Type': 'application/json' } }`
 
 ##### Delete Expenditure
 const url = `https://enigmatic-everglades-24941.herokuapp.com/expenditures/${id}`;
-const config = {
-  mode: 'cors',
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
+const config = `{ mode: 'cors', method: 'DELETE', headers: { 'Content-Type': 'application/json' } }`
 
 ##### Create Session
 const url = `https://enigmatic-everglades-24941.herokuapp.com/users/${username}`;
-const config = {
-  mode: 'cors',
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
+const config = `{ mode: 'cors', method: 'GET', headers: { 'Content-Type': 'application/json' } }`
 
 ##### Create User
 const url = 'https://enigmatic-everglades-24941.herokuapp.com/users';
-const config = {
-  mode: 'cors',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ `${username}` }),
-};
+const config = `{ mode: 'cors', method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ${username} }) }`
 
 ##### Update User
 const url = `https://enigmatic-everglades-24941.herokuapp.com/users/${id}`;
-const config = {
-  mode: 'cors',
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ `${target}` }),
-};
+const config = `{ mode: 'cors', method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ${target} }) }`
 
 ##### The just
 fetch(url, config)

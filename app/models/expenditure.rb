@@ -9,4 +9,14 @@ class Expenditure < ApplicationRecord
   def self.fetch_expenditures user_id
     User.find(user_id).expenditures.order('date DESC')
   end
+
+  def self.destroy_expenditure id
+    expenditure = Expenditure.find(id)
+
+    user_id = expenditure.user.id
+
+    expenditure.destroy
+
+    User.find(user_id).expenditures.order('date DESC')
+  end
 end

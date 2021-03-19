@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(username: params[:id])
 
-    render json: user, status: :ok
+    if user.length == 1
+      render json: user, status: :ok
+    else
+      render json: user, status: :unprocessable_entity
+    end
   end
 
   def create

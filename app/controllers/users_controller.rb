@@ -24,9 +24,9 @@ class UsersController < ApplicationController
     # rubocop:enable Style/NumericPredicate
 
     if user.save
-      render json: true
+      render json: user, status: :ok
     else
-      render json: user.errors
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 

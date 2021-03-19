@@ -1,24 +1,17 @@
 class ExpendituresController < ApplicationController
   def index
-    @expenditures = Expenditure.where("user_id = #{params[:user_id]}").order('date DESC')
+    @expenditures = Expenditure.fetch_expenditures(params[:user_id])
 
-    respond_to do |format|
-      format.json { render json: @expenditures }
-      format.html { render html: @expenditures }
-    end
+    render json: @expenditures, status: :ok
   end
 
   def create
     expenditure = Expenditure.new(expenditure_params)
 
-    respond_to do |format|
-      if expenditure.save
-        format.json { render json: true }
-        format.html { render html: true }
-      else
-        format.json { render json: expenditure.errors }
-        format.html { render html: expenditure }
-      end
+    if expenditure.save
+      render json: true, status: :ok
+    else
+      render json: expenditure.errors, status: :unprocessable_entity
     end
   end
 
@@ -26,15 +19,16 @@ class ExpendituresController < ApplicationController
     expenditure = Expenditure.find(params[:id])
     expenditure.destroy
 
-    respond_to do |format|
-      format.json { render json: true }
-      format.html { render html: true }
-    end
+    render json: true, status: :ok
   end
 
   private
 
   def expenditure_params
     params.require(:expenditure).permit(:expense_id, :value, :date, :description, :user_id)
+  end
+
+  def user_params
+    params.require(:user).permit(:id)
   end
 end

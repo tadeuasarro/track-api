@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   resources :expenditures, except: [:show, :update]
-  resources :users, except: [:destroy, :index]
+  resources :users, defaults: { format: :json }, except: [:destroy, :index]
 end

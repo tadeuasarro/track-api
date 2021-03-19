@@ -8,4 +8,8 @@ class Expenditure < ApplicationRecord
   validates :expense_id, presence: true
 
   belongs_to :user
+
+  def self.fetch_expenditures user_id
+    User.find(user_id).expenditures.order('date DESC')
+  end
 end

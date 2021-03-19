@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(username: params[:id])
 
-    if user.length == 1
+    Rails.logger.debug user
+
+    if user
       render json: user, status: :ok
     else
-      render json: user, status: :unprocessable_entity
+      render json: user, status: :not_found
     end
   end
 

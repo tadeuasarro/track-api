@@ -4,10 +4,10 @@ class User < ApplicationRecord
 
   has_many :expenditures
 
-  def self.validate_user params
+  def self.validate_user(params)
     user = User.new(params)
     return user unless user.valid?
 
-    user = User.find_by(username: params[:id])
+    User.find_by(username: params[:id])
   end
 end

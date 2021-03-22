@@ -6,11 +6,11 @@ class Expenditure < ApplicationRecord
 
   belongs_to :user
 
-  def self.fetch_expenditures user_id
+  def self.fetch_expenditures(user_id)
     User.find(user_id).expenditures.order('date DESC')
   end
 
-  def self.destroy_expenditure id
+  def self.destroy_expenditure(id)
     expenditure = Expenditure.find(id)
 
     user_id = expenditure.user.id

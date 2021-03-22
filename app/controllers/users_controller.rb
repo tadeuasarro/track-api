@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:id])
 
     if user
-      render json: user.to_json(include: :expenditures ), status: :ok
+      render json: user.to_json(include: :expenditures), status: :ok
     else
       render json: user, status: :not_found
     end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     # rubocop:enable Style/NumericPredicate
 
     if user.save
-      render json: user.to_json(include: :expenditures ), status: :ok
+      render json: user.to_json(include: :expenditures), status: :ok
     else
       render json: user.errors, status: :unprocessable_entity
     end

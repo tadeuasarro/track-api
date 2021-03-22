@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-      render json: user, status: :ok
+      render json: user.to_json(include: :expenditures), status: :ok
     else
       render json: user.errors, status: :unprocessable_entity
     end

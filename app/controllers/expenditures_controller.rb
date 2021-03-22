@@ -19,8 +19,6 @@ class ExpendituresController < ApplicationController
   def destroy
     expenditures = Expenditure.destroy_expenditure(params[:id])
 
-    Rails.logger.debug expenditures
-
     render json: expenditures, status: :ok
   end
 

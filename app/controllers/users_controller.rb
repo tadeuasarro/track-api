@@ -2,10 +2,8 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(username: params[:id])
 
-    Rails.logger.debug user
-
     if user
-      render json: user, status: :ok
+      render json: user.to_json(include: :expenditures ), status: :ok
     else
       render json: user, status: :not_found
     end

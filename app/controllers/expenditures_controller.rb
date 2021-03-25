@@ -9,26 +9,23 @@ class ExpendituresController < ApplicationController
     expenditure = Expenditure.new(expenditure_params)
 
     if expenditure.save
-      expenditures = Expenditure.fetch_expenditures(params[:user_id])
-      render json: expenditures, status: :ok
+      render json: expenditure, status: :ok
     else
       render json: expenditure.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    expenditures = Expenditure.destroy_expenditure(params[:id])
+    expenditure = Expenditure.find(params[:id])
 
-    render json: expenditures, status: :ok
+    expenditure.destroy
+
+    render json: expenditure, status: :ok
   end
 
   private
 
   def expenditure_params
     params.require(:expenditure).permit(:category, :value, :date, :description, :user_id)
-  end
-
-  def user_params
-    params.require(:user).permit(:id)
   end
 end

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
+  require 'jwt'
   def show
-    user = User.find_by(username: params[:id])
+    user = User.validate_user(params)
 
     if user
-      render json: user.to_json(include: :expenditures), status: :ok
+      render json: user, status: :ok
     else
       render json: user, status: :not_found
     end

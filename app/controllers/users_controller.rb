@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   require 'jwt'
   def show
-    user = User.validate_user(params)
+    user = User.validate_user(params[:id])
 
     if user
       render json: user, status: :ok

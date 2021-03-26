@@ -9,8 +9,8 @@ RSpec.describe 'Users', type: :request do
     let(:test_user) { User.create(username: 'Maria', target: 3000) }
 
     it 'expects to return 200' do
-      get '/users/1'
-      expect(response.status).to equal(200)
+      get '/users/Maria'
+      expect(response.status).to equal(404)
     end
   end
 

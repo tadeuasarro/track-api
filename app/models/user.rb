@@ -4,9 +4,9 @@ class User < ApplicationRecord
 
   has_many :expenditures
 
-  def self.validate_user(params)
-    user = User.find_by(username: params[:id])
+  def self.validate_user(param)
+    user = User.find_by(username: param)
 
-    { user: user, token: JWT.encode(user.username, nil, 'none') }
+    return { user: user, token: JWT.encode(user[:username], nil, 'none') } if user
   end
 end

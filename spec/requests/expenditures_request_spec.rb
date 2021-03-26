@@ -25,7 +25,7 @@ RSpec.describe 'Expenditures', type: :request do
       post '/expenditures',
            params: {
              expenditure: {
-               expense_id: 1,
+               category: 1,
                value: 1000,
                date: '2020/03/01',
                description: 'This is just some string',

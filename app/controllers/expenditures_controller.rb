@@ -8,6 +8,8 @@ class ExpendituresController < ApplicationController
   def create
     expenditure = Expenditure.new(expenditure_params)
 
+    Rails.logger.debug expenditure
+
     if expenditure.save
       render json: expenditure, status: :ok
     else
